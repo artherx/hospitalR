@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - objM
+  - dedo
   layers:
   - Default
   - TransparentFX
