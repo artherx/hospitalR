@@ -56,25 +56,29 @@ public class coder : MonoBehaviour
         switch (tipoPuzzle)
         {
             case Puzzle.A:
-                numberCode += number.ToString();
+                if (numberCode != codigo) numberCode += number.ToString();
                 break;
             case Puzzle.B:
-                if (col == 0)
+                if (numberCode != codigo)
                 {
-                    coll += (int)number;
-                    if (coll <0) coll = 9;
+
+                    if (col == 0)
+                    {
+                        coll += (int)number;
+                        if (coll < 0) coll = 9;
+                    }
+                    if (col == 1)
+                    {
+                        coll1 += (int)number;
+                        if (coll1 < 0) coll1 = 9;
+                    }
+                    if (col == 2)
+                    {
+                        coll2 += (int)number;
+                        if (coll2 < 0) coll2 = 9;
+                    }
+                    numberCode = coll.ToString() + coll1.ToString() + coll2.ToString();
                 }
-                if (col == 1)
-                {
-                    coll1 += (int)number;
-                    if (coll1 < 0) coll1 = 9;
-                }
-                if (col == 2)
-                {
-                    coll2 += (int)number;
-                    if (coll2 < 0) coll2 = 9;
-                }
-                numberCode = coll.ToString() + coll1.ToString() + coll2.ToString();
                 break;
         }
     }
