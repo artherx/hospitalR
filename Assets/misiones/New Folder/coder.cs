@@ -12,31 +12,30 @@ public class coder : MonoBehaviour
         D,
     }
     public Puzzle tipoPuzzle;
-    private Renderer render;
+    public GameObject[] Luz;
     private Color color;
     private float time = 0f;
     private int coll = 0;
     private int coll1 = 0;
     private int coll2 = 0;
+    public bool isCode = false;
 
     public string numberCode = "";
     public string codigo = "1234";
     // Update is called once per frame
-
     private void Start()
     {
-        Transform t = transform.Find("Capsule");
-        if (t != null) render = t.GetComponent<Renderer>();
-        color = render.material.color;
+        foreach (GameObject g in Luz) g.SetActive(false);
     }
+
     void Update()
     {
-        if (render != null)
+        if (Luz != null)
         {
-            if (render.material.color != color && render.material.color != Color.green)
+            if (Luz[1])
                 if (tipoPuzzle == Puzzle.A) tiempo();
-            if (numberCode == codigo) render.material.color = Color.green;
-            if (numberCode != codigo && numberCode.Length >= codigo.Length) render.material.color = Color.red;
+            if (numberCode == codigo) { Luz[0].SetActive(true); isCode = true; }
+            if (numberCode != codigo && numberCode.Length >= codigo.Length) Luz[1].SetActive(true);
         }
 
     }
@@ -47,7 +46,8 @@ public class coder : MonoBehaviour
         {
 
             time = 0f;
-            render.material.color = color;
+            Luz[0].SetActive(false);
+            Luz[1].SetActive(false);
             numberCode = "";
         }
     }
