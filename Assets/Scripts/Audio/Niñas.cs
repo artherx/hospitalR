@@ -20,8 +20,9 @@ public class Niñas : MonoBehaviour
      private void OnTriggerEnter(Collider other)
     {
         // Si el objeto que ha entrado en colision es el player
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "fantasma")
         {
+            Debug.Log("entro Valor: " + valor);
 
             valor++;
         }

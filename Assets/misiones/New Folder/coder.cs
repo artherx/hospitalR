@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class coder : MonoBehaviour
@@ -21,6 +22,7 @@ public class coder : MonoBehaviour
     public bool isCode = false;
     public GameObject contrincante;
     public GameObject contrincanteBotones;
+    public TextMeshPro texto;
 
     public string numberCode = "";
     public string codigo = "1234";
@@ -32,6 +34,7 @@ public class coder : MonoBehaviour
 
     void Update()
     {
+        texto.text = numberCode;
         if (Luz != null)
         {
             if (numberCode == codigo) { Luz[0].SetActive(true); isCode = true; }

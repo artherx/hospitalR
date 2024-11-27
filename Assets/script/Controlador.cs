@@ -22,7 +22,7 @@ public class Controlador : MonoBehaviour
             if(camara == null)camara = allObjects.First(obj => obj.name.Contains("Main Camera")).transform;
             Debug.Log("se encontro cabeza: "+ cabeza.name);
             
-            avatar[5].position -= new Vector3(0, 0.6f, 0);
+            if(avatar[5]!=null)avatar[5].position -= new Vector3(0, 0.6f, 0);
         }
     }
     private void Update()

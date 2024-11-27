@@ -26,10 +26,10 @@ public class AbrirP : MonoBehaviour
     void Update()
     {
         if (!prima && VerificarCoders(coderC)) // Verifica la condición.
-    {
-        OpenDoor();
-        prima = true; // Evita que la puerta se vuelva a abrir.
-    }
+        {
+            OpenDoor();
+            prima = true; // Evita que la puerta se vuelva a abrir.
+        }
         if (isOpening)
         {
             elapsedTime += Time.deltaTime;
@@ -55,7 +55,7 @@ public class AbrirP : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (ColorT != null) ColorT.color = Color.green;
+        if (ColorT != null) { ColorT.color = Color.green; ColorT.EnableKeyword("_EMISSION");}
         if (Luz != null) Luz.SetActive(true);
         isOpening = true;
     }

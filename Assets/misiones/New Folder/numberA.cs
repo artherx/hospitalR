@@ -15,6 +15,7 @@ public class numberA : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "dedo"){
+            Debug.Log("entro");
             switch(co.tipoPuzzle){
                 case coder.Puzzle.A:
                     co.addNumber(number,co.tipoPuzzle);

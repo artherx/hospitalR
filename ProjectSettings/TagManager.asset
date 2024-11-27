@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - dedo
+  - fantasma
+  - dedoF
   layers:
   - Default
   - TransparentFX
