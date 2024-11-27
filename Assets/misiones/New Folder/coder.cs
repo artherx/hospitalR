@@ -19,6 +19,8 @@ public class coder : MonoBehaviour
     private int coll1 = 0;
     private int coll2 = 0;
     public bool isCode = false;
+    public GameObject contrincante;
+    public GameObject contrincanteBotones;
 
     public string numberCode = "";
     public string codigo = "1234";
@@ -32,10 +34,17 @@ public class coder : MonoBehaviour
     {
         if (Luz != null)
         {
-            if (Luz[1])
-                if (tipoPuzzle == Puzzle.A) tiempo();
             if (numberCode == codigo) { Luz[0].SetActive(true); isCode = true; }
-            if (numberCode != codigo && numberCode.Length >= codigo.Length) Luz[1].SetActive(true);
+            if (numberCode != codigo && numberCode.Length >= codigo.Length)
+            {
+                Luz[1].SetActive(true);
+                if (Luz[1])
+                    if (tipoPuzzle == Puzzle.A) tiempo();
+            }
+            if (contrincante != null && isCode && contrincanteBotones != null)
+            {
+                contrincanteBotones.SetActive(false);
+            }
         }
 
     }

@@ -13,26 +13,23 @@ public class AbrirP : MonoBehaviour
     public GameObject puerta;
     public GameObject Luz;
     public Material ColorT;
-    public coder[]  coderC;
+    public coder[] coderC;
     private bool prima = false;
 
     void Start()
     {
         closedRotation = puerta.transform.localRotation; // Guarda la rotación actual de la puerta.
         openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0); // Define la rotación abierta.
-        if(Luz != null) Luz.SetActive(false);
+        if (Luz != null) Luz.SetActive(false);
     }
 
     void Update()
     {
-        if (!prima)
-        foreach (coder c in coderC)
-        {
-            if (!c.isCode)
-            {break;
-            }
-            else {OpenDoor(); prima = true; break;}
-        }
+        if (!prima && VerificarCoders(coderC)) // Verifica la condición.
+    {
+        OpenDoor();
+        prima = true; // Evita que la puerta se vuelva a abrir.
+    }
         if (isOpening)
         {
             elapsedTime += Time.deltaTime;
@@ -43,10 +40,22 @@ public class AbrirP : MonoBehaviour
                 isOpening = false; // Detiene el movimiento al completarse.
         }
     }
+    bool VerificarCoders(coder[] coderD)
+    {
+        foreach (coder c in coderD)
+        {
+            if (!c.isCode) // Si encuentra uno en false, devuelve false.
+            {
+                return false;
+            }
+        }
+        return true; // Si no encuentra ninguno en false, devuelve true.
+    }
+
 
     public void OpenDoor()
     {
-        if(ColorT != null) ColorT.color = Color.green;
+        if (ColorT != null) ColorT.color = Color.green;
         if (Luz != null) Luz.SetActive(true);
         isOpening = true;
     }
